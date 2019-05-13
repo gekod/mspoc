@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>microservices-poc-service1</artifactId>
+    <artifactId>mspoc-service1</artifactId>
 
     <properties>
         <spring-cloud.version>2.1.2.RELEASE</spring-cloud.version>

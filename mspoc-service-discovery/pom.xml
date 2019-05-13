@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>microservices-poc-service-discovery</artifactId>
+    <artifactId>mspoc-service-discovery</artifactId>
 
     <properties>
         <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
