@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +13,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 @SpringBootApplication
+@EnableEurekaClient
+@EnableFeignClients
 public class Service1Application {
 
     public static void main(String[] args) {
@@ -18,25 +22,39 @@ public class Service1Application {
     }
 }
 
-@RestController
-class MessageRestController {
 
-    private ServiceProperties serviceProperties;
+@RestController
+class Service1Controller {
+
+    private Service1Properties serviceProperties;
+
+    private GreetingClient greetingClient;
 
     @Inject
-    public MessageRestController(ServiceProperties serviceProperties) {
+    public Service1Controller(Service1Properties serviceProperties, GreetingClient greetingClient) {
         this.serviceProperties = serviceProperties;
+        this.greetingClient = greetingClient;
     }
 
     @GetMapping("/message")
     String getMessage() {
         return this.serviceProperties.getMessage();
     }
+
+    @GetMapping("/greeting")
+    public String greeting() {
+        return greetingClient.greeting();
+    }
+
+    private String fallbackGreeting() {
+        return "Default Greeting";
+    }
 }
+
 
 @Named
 @RefreshScope
-class ServiceProperties {
+class Service1Properties {
 
     @Value("${message:Hello default}")
     private String message;

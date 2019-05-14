@@ -6,7 +6,7 @@ server:
 
 spring:
   application:
-    name: service2
+    name: mspoc-service2
 
 eureka:
   instance:
