@@ -10,19 +10,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>microservices-poc-service2</artifactId>
+    <artifactId>mspoc-service2</artifactId>
 
     <properties>
-        <spring-cloud.version>2.1.2.RELEASE</spring-cloud.version>
+        <spring-cloud.version>2.1.1.RELEASE</spring-cloud.version>
         <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
         <java-inject.version>1</java-inject.version>
         <lombok.version>1.18.6</lombok.version>
+        <gson.version>2.8.2</gson.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
             <version>${spring-cloud.version}</version>
         </dependency>
         <dependency>
@@ -40,6 +41,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
         </dependency>
 
         <dependency>

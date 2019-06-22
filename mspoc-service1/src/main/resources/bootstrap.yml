@@ -18,3 +18,11 @@ management:
     web:
       exposure:
         include: '*'
+
+# Service discovery
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 3
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
